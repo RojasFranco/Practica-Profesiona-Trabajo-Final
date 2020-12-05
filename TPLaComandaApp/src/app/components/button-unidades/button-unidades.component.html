@@ -1,0 +1,14 @@
+<ion-card  class="cardMenu">
+  <ion-item>
+    <ion-label>
+      {{label}}
+    </ion-label>
+  </ion-item>
+  <ion-card-content class="contentUnidad">
+    <div class="buttonUnidades">
+      <ion-icon (click)="removeUnidad()" slot="end" name="remove"></ion-icon>
+      <div class="unidad">{{unidad}}</div>
+      <ion-icon (click)="addUnidad()" slot="start" name="add" style="margin-left: 52px;"></ion-icon>
+    </div>
+  </ion-card-content>
+</ion-card>

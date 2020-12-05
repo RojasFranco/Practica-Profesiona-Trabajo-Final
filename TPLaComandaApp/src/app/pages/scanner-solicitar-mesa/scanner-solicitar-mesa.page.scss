@@ -1,0 +1,32 @@
+ion-content{
+    --background: linear-gradient(30deg, #3e5697 0%, #cdedf7 100%);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+ion-grid{
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.txtAzul{
+    color: #023999;
+    font-size: xx-large;
+}
+
+.txtRojo{
+    color: #8d1424;
+}
+
+.txtBlanco{
+    color: #ffffff;
+    font-size: xx-large;
+}
+
+.titulo{
+    color: #3880ff;
+    margin-left: 15vw;
+    margin-right: 15vw;
+}

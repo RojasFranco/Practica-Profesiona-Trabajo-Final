@@ -1,0 +1,27 @@
+
+<app-header [urlBack]="'/home'"></app-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-button
+      (click)="scannerMesa()" 
+      size="large" 
+      expand="block">
+      Escanear mesa <span><ion-icon name="qr-code-outline"></ion-icon></span>
+    </ion-button>
+  </div>
+
+  <ion-slides [options]="optionsSlide">
+    <ion-slide>
+      <!-- <span class="cartel-aprobado">La mesa escaneada esta asignada a otro cliente!!</span> -->
+    </ion-slide>
+  </ion-slides>
+
+  <ion-fab class="btn-volver" vertical="bottom" horizontal="start" slot="fixed">
+    <ion-button expand="block" (click)="volver()"
+                color="warning">
+      Volver al inicio
+    </ion-button>
+  </ion-fab>
+
+</ion-content>

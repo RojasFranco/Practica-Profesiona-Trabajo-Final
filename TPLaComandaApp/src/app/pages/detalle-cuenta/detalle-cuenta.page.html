@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center"></ion-title>
+    <ion-row class="ion-align-items-center">
+      <ion-icon (click)="Volver()" name="arrow-back-circle-outline" size="large" slot=""></ion-icon>
+      <h4 class="titulo" >Detalle de su cuenta</h4>
+    </ion-row>   
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding-vertical">
+  <table class="ion-text-center ion-margin-vertical">
+    <thead>
+      <tr style="border-bottom: groove;">
+        <th>Pedido</th>
+        <th>Precio Unitario</th>
+        <th>Cantidad</th>
+        <th>Precio Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listaPedidos" style="border-bottom: groove;">
+        <td class="ion-padding-vertical">{{item.producto}}</td>
+        <td >${{item.precioUnitario}}</td>
+        <td>{{item.cantidad}}</td>
+        <td>${{item.total}}</td>
+      </tr>
+    </tbody>
+    <tr>
+      <td class="ion-padding-vertical">Propina</td>
+      <td>-</td>
+      <td>-</td>
+      <td>${{propina}}</td>
+    </tr>
+    <tr>
+      <td class="ion-padding-vertical">Descuento</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-${{descuento}}</td>
+    </tr>
+  </table>
+  <ion-row class="ion-justify-content-end ion-margin-vertical"><strong style="text-decoration: underline;">TOTAL A PAGAR: ${{totalPagar}}</strong></ion-row>
+  <!-- <ion-row class="ion-justify-content-end"><ion-button color="light">Pagar</ion-button></ion-row> -->
+</ion-content>

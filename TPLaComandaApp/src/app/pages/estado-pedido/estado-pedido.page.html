@@ -1,0 +1,25 @@
+<app-header [urlBack]="previousurl"></app-header>
+
+<ion-content>
+  <ion-card  class="cardMenu">
+    <ion-list>
+      <app-input-switch></app-input-switch>
+      <ion-card-header class="card-pedido">
+        <img class="image-slide-pedido" [src]="conceptosService.concepto.imgs[0]" alt="">
+        <h5><strong>{{pedidosService.pedidoDetalle.conceptoNombre}}</strong></h5>
+        <p>{{conceptosService.concepto.descripcion}}</p>
+      </ion-card-header>
+      <ion-list class="background-input">
+        <ion-item>
+          <ion-label position="floating">Tiempo estimado</ion-label>
+          <ion-input class="form-control" [(ngModel)]="pedidosService.pedidoDetalle.tiempo"
+            [ngClass]="{'is-invalid': true, 'is-valid': false}" 
+            type="text"
+            (keypress)="isNumberKey($event)">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-list>
+    <app-button-update-estado-pedido></app-button-update-estado-pedido>
+  </ion-card>
+</ion-content>

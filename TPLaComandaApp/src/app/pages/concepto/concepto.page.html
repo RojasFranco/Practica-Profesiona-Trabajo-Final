@@ -1,0 +1,44 @@
+<app-header [urlBack]="previousurl"></app-header>
+
+<ion-content>
+  <ion-card  class="cardMenu">
+    <ion-card-header>
+      <ion-slides pager="true" *ngIf="conceptosService.concepto.imgs.length > 1">
+
+        <ion-slide *ngFor="let img of conceptosService.concepto.imgs"
+                   class="image-slide"
+                   [style]=" img | domSanitizer ">
+        </ion-slide>
+    
+      </ion-slides>
+      <!-- <img class="image-slide" [src]="conceptosService.concepto.imgs[0]" alt=""> -->
+      <h5><strong>{{conceptosService.concepto.nombre}}</strong></h5>
+      <p>{{conceptosService.concepto.descripcion}}</p>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        <strong>Tiempo estimado: </strong>{{conceptosService.concepto.tiempo}} min
+      </p>
+      <p>
+        <strong>Precio: </strong>{{conceptosService.concepto.precio | currency}}
+      </p>
+      <p>
+        <strong>Precio total: </strong>{{importeTotal | currency}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Button de unidades -->
+  <div>
+    <app-button-unidades [label]="'Unidades'" (cantidad)="RecalculoTotal($event)"></app-button-unidades>
+    
+    <ion-footer>
+      <ion-toolbar>
+        <ion-button expand="block" (click)="agregarAlPedido()">
+          <ion-icon name="reader-outline" slot="start"></ion-icon>
+          Agregar al pedido
+        </ion-button>
+      </ion-toolbar>
+    </ion-footer>
+  </div>
+</ion-content>

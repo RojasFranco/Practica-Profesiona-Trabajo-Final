@@ -1,0 +1,90 @@
+<app-header [urlBack]="'/productos'"></app-header>
+
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="addConcepto()"> 
+    <h2 class="title">
+      {{title}}
+    </h2>
+  
+    <ion-row>
+      <app-input-camera-img class="input-camera"></app-input-camera-img>
+    </ion-row>
+  
+    <ion-list class="background-input">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input class="form-control" name="nombre" type="text" [(ngModel)]="concepto.nombre" formControlName="nombre"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="form.controls['nombre'].errors && form.controls['nombre'].dirty">
+        <p *ngIf="form.controls['nombre'].errors?.required" class="error">
+            Este campo es requerido.
+        </p>
+        <p *ngIf="form.controls['nombre'].errors?.minlength" 
+              class="error">
+              El nombre debe tener 3 o mas carácteres.
+        </p>
+      </ion-item>
+    </ion-list>
+  
+    <ion-list class="background-input">
+      <ion-item>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-textarea class="form-control" [(ngModel)]="concepto.descripcion"  formControlName="descripcion"></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="background-input">
+      <ion-item>
+        <ion-label position="floating">Sección</ion-label>
+        <ion-input class="form-control" name="seccion" type="text" [(ngModel)]="concepto.seccion" formControlName="seccion"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="form.controls['seccion'].errors && form.controls['seccion'].dirty">
+        <p *ngIf="form.controls['seccion'].errors?.required" class="error">
+            Este campo es requerido.
+        </p>
+        <p *ngIf="form.controls['seccion'].errors?.minlength" 
+              class="error">
+              La sección debe tener 3 o mas carácteres.
+        </p>
+      </ion-item>
+    </ion-list>
+
+
+    <ion-list class="background-input">
+      <ion-item>
+        <ion-label position="floating">Tiempo de preparación</ion-label>
+        <ion-input class="form-control" name="tiempo" type="text" [(ngModel)]="concepto.tiempo" formControlName="tiempo"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="form.controls['tiempo'].errors && form.controls['tiempo'].dirty">
+        <p *ngIf="form.controls['tiempo'].errors?.required" class="error">
+            Este campo es requerido.
+        </p>
+      </ion-item>
+    </ion-list>
+  
+    <ion-list class="background-input">
+      <ion-item>
+        <ion-label position="floating">Precio</ion-label>
+        <ion-input class="form-control" name="precio" type="text" [(ngModel)]="concepto.precio" formControlName="precio"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="form.controls['precio'].errors && form.controls['precio'].dirty">
+        <p *ngIf="form.controls['precio'].errors?.required" class="error">
+            Este campo es requerido.
+        </p>
+      </ion-item>
+    </ion-list>
+  
+  
+    <div class="ion-padding" class="btn-submit" vertical="bottom" slot="fixed">
+      <ion-button type="submit" expand="block" fill="outline"
+      [disabled]="form.invalid || conceptosService.tempImages.length !== 3" 
+      color="primary">
+        Agregar
+      </ion-button>
+    </div>
+
+  </form>
+
+  
+</ion-content>

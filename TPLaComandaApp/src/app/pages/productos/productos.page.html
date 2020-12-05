@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="font-family: serif;" slot="start">
+      <app-header [urlBack]="'/home'"></app-header>
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar showCancelButton="focus" (ionChange)="buscarConcepto($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-fab vertical="top" horizontal="end" slot="fixed" (click)="addConcepto()">
+    <ion-fab-button color="success">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-card *ngFor="let item  of listConceptoAux | filtro:texto" class="cardMenu">
+    <ion-card-header>
+      <ion-card-title class="titleMenu">{{item.name}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list class="listMenu">
+        <ion-item-sliding class="itemMenu" *ngFor="let concepto of item.values">
+          <ion-item>
+            <ion-col size="8">
+              {{concepto.nombre}}<br>
+              {{concepto.precio | currency }}
+            </ion-col>
+            <ion-col size="4" class="col-img">
+              <img class="menu-img" [src]="concepto.imgs[0]"/>
+            </ion-col>
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="deleteConcepto(concepto)">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-item-option>
+            <ion-item-option (click)="editConcepto(concepto)">
+              <ion-icon slot="icon-only" name="pencil"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

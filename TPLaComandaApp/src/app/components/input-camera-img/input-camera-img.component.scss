@@ -1,0 +1,33 @@
+ion-button{
+    --background: #062f77;
+    --border-radius: 10px;
+    height: 120%;
+    ion-icon{
+        font-size: xx-large;
+    }
+}
+
+ion-row {
+    ion-col {
+        text-align: center;
+    }
+}
+
+img {
+    width: 80px;
+    height: 80px;
+}
+
+.badge-img {
+    
+    border-radius: 50%;
+    font-size: xx-large;
+    width: 25px;
+}
+
+.error{
+    padding-left: 15px;
+    white-space: normal;
+    color:red;
+    font-weight: bolder;
+}

@@ -1,0 +1,32 @@
+
+
+
+<ion-row>
+  <ion-col size="12">
+    <ion-button expand="round"
+                shape="round"
+                (click)="openCamera()"
+                [disabled]="conceptosService.tempImages.length > 2">
+      <ion-icon slot="icon-only" name="camera"></ion-icon>
+    </ion-button>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="4" *ngFor="let image of conceptosService.tempImages; let i = index">
+    <ion-card>
+      <img [src]="image">
+      <ion-badge 
+      *ngIf="isEdit"
+      class="badge-img" 
+      color="danger"
+      (click)="deleteImg(i)">
+                  -
+        </ion-badge>
+      </ion-card>
+    </ion-col>
+    <p *ngIf="conceptosService.tempImages.length < 3" class="error">
+      Debe ingresar 3 fotos.
+    </p>
+</ion-row>
+

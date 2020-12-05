@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar *ngIf="mesaElegida; else noEligioMesa" color="ligth" class="ion-text-center">
+      <ion-icon *ngIf="rolUsuario=='cliente'||rolUsuario=='cliente_anonimo'" (click)="Volver()" size="large" slot="start" color="primary" name="arrow-back-circle-outline"></ion-icon>
+      <ion-icon *ngIf="tipoUsuario=='mozo'||tipoUsuario=='metre'" (click)="CargarUsuario()" size="large" slot="start" color="primary" name="arrow-back-circle-outline"></ion-icon>
+      <ion-title color="primary" class="ion-margin-end">
+        Mesa: {{nroMesa}}
+      </ion-title>
+    </ion-toolbar>
+    <ng-template #noEligioMesa>
+      <ion-toolbar color="ligth" class="ion-text-center">
+        <ion-title color="primary" class="ion-margin-end">
+          Consultas
+        </ion-title> 
+        <ion-icon (click)="Volver()" size="large" slot="start" color="primary" name="arrow-back-circle-outline"></ion-icon>
+      </ion-toolbar>
+    </ng-template>
+ 
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="mesaElegida; else mozoElijaMesa">
+    <ion-grid *ngFor="let item of listaMensajes">
+      <ion-row *ngIf="item.usuario == idUsuarioActual; else otroUsuario" class="ion-justify-content-end">
+          <ion-col size="8" class="informacion">{{item.fecha}}</ion-col>
+          <ion-col size="8" class="mensajes"><label>{{item.mensaje}}</label></ion-col>
+      </ion-row>
+      <ng-template #otroUsuario>
+          <ion-row class="ion-justify-content-start">
+              <ion-col size="8" class="informacion">{{item.nombre}} - {{item.fecha}}</ion-col>
+              <ion-col size="8" class="mensajes"><label>{{item.mensaje}}</label></ion-col>                
+          </ion-row>
+      </ng-template>    
+    </ion-grid>
+  
+    <ion-row class="contenedorMsj">
+      <ion-col size="9">
+          <textarea class="txtMje" placeholder="Escriba su mensaje..." [(ngModel)]="mensajeNuevo" rows="1" ></textarea>
+      </ion-col>
+      <ion-col>
+          <ion-button (click)="AgregarMje()" size="small" class="btnEnviar"><ion-icon name="send-outline" ></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <ng-template #mozoElijaMesa>
+    <ion-row class="ion-justify-content-center">
+      <h3>Seleccione el número de mesa</h3>
+    </ion-row>    
+    <ion-grid  class="gridBotones">      
+      <div *ngFor="let item of todasLasMesas">
+        <ion-row class="ion-justify-content-center ion-margin-top">
+          <ion-button (click)="ElegirMesa(item)" class="btnesMesas" size="large">Mesa: {{item}}</ion-button>
+        </ion-row>
+      </div>
+
+    </ion-grid>
+    <!-- <ion-grid *ngFor="let item of todasLasMesas" class="gridBotones">      
+      <ion-row class="ion-justify-content-center">
+        <ion-button class="btnesMesas" size="large">{{item}}</ion-button>
+      </ion-row>
+    </ion-grid> -->
+  </ng-template>
+  
+
+</ion-content>

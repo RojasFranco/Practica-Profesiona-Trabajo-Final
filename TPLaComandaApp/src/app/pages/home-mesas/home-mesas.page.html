@@ -1,0 +1,23 @@
+<app-header [urlBack]="'/home'"></app-header>
+
+<ion-content [fullscreen]="true">
+  <div class="card-menu">
+    <div *ngFor="let item of homeMesasService.listaMenu" >
+      <ion-card [ngStyle]="item.style"(click)="showPage(item.route)" *ngIf="item.visible">
+        <ion-row>
+          <ion-col>
+            <ion-card-header>
+              <ion-card-title class="titleMenu" style="font-weight: 900;">{{item.title}}</ion-card-title>
+            </ion-card-header>
+          </ion-col>
+          <ion-col>
+            <ion-card-content>
+                  <ion-icon [class]="item.class" [name]="item.icon"></ion-icon>
+            </ion-card-content>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
+

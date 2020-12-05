@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <strong>Asignar mesa</strong><br>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="irAtras()"
+                  color="danger">
+                  Volver
+                  <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<h1>Lista de clientes en espera</h1>
+<!--
+<table>
+  <thead>
+    <tr>
+      <td>CODIGO QR</td>
+      <td>ID</td>
+      <td>CLIENTE</td>
+      <td>ESTADO</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let mesa of listaMesas | async">
+      <td>{{mesa.codigoqr}}</td>
+      <td>{{mesa.id}}</td>
+      <td>{{mesa.cliente}}</td>
+      <td>{{mesa.estado}}</td>
+  </tr>
+  </tbody>
+</table>
+-->
+<ion-grid >
+    <ion-row class="tabla">
+      <ion-col size="6" class="celda centrar">NOMBRE</ion-col>
+      <ion-col size="6" class="centrar">TIPO</ion-col>
+    </ion-row>
+    <div  *ngFor="let cliente of listaClientesEspera | async">
+      <ion-row class="tabla">
+        <ion-col size="6" class="celda">{{cliente.nombre}}</ion-col>
+        <ion-col size="6" class="">{{cliente.role}}</ion-col>
+      </ion-row>
+      <ion-row class="tabla">
+        <ion-col size="12" class="">
+          <ion-button expand="block" (click)="abrirMenu(cliente)">Asignar mesa</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+<!--
+<table>
+  <thead>
+    <tr>
+      <td>UID</td>
+      <td>NOMBRE</td>
+      <td>ACCION</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of listaClientesEspera | async">
+      <td>{{cliente.uid}}</td>
+      <td>{{cliente.nombre}}</td>
+      <td>
+        <ion-button (click)="abrirMenu(cliente)">Asignar mesa</ion-button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+-->
+</ion-content>

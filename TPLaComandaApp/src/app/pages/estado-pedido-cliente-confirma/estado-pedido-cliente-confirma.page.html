@@ -1,0 +1,38 @@
+<app-header [urlBack]="previousurl"></app-header>
+
+<ion-content>
+  <ion-card class="cardMenu">
+    <ion-card-header>
+      <ion-card-title class="titleMenu">Estado de su orden</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list class="listMenu">
+        <ion-item class="itemMenu" *ngFor="let item of pedido.detallePedido; let i = index">
+            <ion-col size="8">
+              <p>{{item.conceptoNombre}}</p>
+              <p>{{item.importeUnitario | currency}} X {{item.cantidad}} = <strong>{{item.importeTotal | currency}}</strong></p> 
+              
+            </ion-col>
+            <ion-col size="4">
+              <p [ngStyle]="{'color': item.estado.match('Pendiente', 'Preparando') ? 'red' : 'green'}">
+                <strong>{{item.estado}}</strong>
+              </p>
+            </ion-col>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <h1>Total: {{pedidosService.totalPedido | currency}}</h1>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <app-button-update-pedido-recepcion *ngIf="pedido.estado == 'Confirmar entrega'"></app-button-update-pedido-recepcion>
+  </ion-toolbar>
+</ion-footer>

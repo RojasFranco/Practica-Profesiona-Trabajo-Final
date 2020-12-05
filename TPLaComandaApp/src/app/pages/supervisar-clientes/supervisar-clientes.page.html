@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <strong>Supervisar clientes</strong><br>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="irAtras()"
+                  color="danger">
+                  Volver
+                  <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="centrar">Clientes registrados</h1>
+  <ion-grid >
+    <ion-row class="tabla">
+      <ion-col size="6" class="celda centrar">NOMBRE</ion-col>
+      <ion-col size="6" class="centrar">CORREO</ion-col>
+    </ion-row>
+    <div *ngIf="lista">
+      <div *ngFor="let cliente of lista">
+        <ion-row class="tabla">
+          <ion-col size="6" class="celda">{{cliente.nombre}}</ion-col>
+          <ion-col size="6">{{cliente.email}}</ion-col>
+        </ion-row>
+        <ion-row class="tabla">
+          <ion-col size="6">
+            <ion-button expand="block" class="buttonEstado" color="success" (click)="cambiarEstado(cliente, 'aprobado')">Aprobar</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" class="buttonEstado" color="danger" (click)="cambiarEstado(cliente, 'rechazado')">Rechazar</ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </ion-grid>
+</ion-content>

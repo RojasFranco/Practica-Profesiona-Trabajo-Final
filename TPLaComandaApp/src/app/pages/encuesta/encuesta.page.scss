@@ -1,0 +1,27 @@
+.celdaCentrada{
+    justify-content: center;
+    display: flex!important;
+    align-content: center!important;
+    align-items: center!important;
+}
+
+.radioExpandido{
+    padding-left: 2px;
+    height: 2em;
+    width: 2em;
+}
+
+ion-item{
+    font-size: 1.2em;
+}
+
+ion-label{
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace !important;
+}
+
+.buttonEnviar{
+    height: 3em;
+    font-size: 1.5em;
+}

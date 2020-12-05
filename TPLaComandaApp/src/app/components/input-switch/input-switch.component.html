@@ -1,0 +1,9 @@
+
+<ion-segment value="actual" (ionChange)="estadoChange($event)">
+  <ion-segment-button class="segment-pedido" value="actual">
+    <ion-label>{{estadoActual}}</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="siguiente">
+    <ion-label>{{estadoPost}}</ion-label>
+  </ion-segment-button>
+</ion-segment>

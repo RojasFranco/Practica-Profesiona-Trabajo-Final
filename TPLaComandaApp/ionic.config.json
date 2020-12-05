@@ -1,0 +1,7 @@
+{
+  "name": "TPLaComandaApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center"></ion-title>
+    <ion-row class="ion-align-items-center">
+      <ion-icon (click)="Volver()" name="arrow-back-circle-outline" size="large" slot=""></ion-icon>
+      <h4 class="titulo" >PIEDRA, PAPEL O TIJERA</h4>
+    </ion-row>   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+    <ion-row>
+    <!-- <div class="row border text-center my-3"> -->
+      <ion-col class="ion-text-center">
+        <p>Maquina</p>
+        <img src="{{ srcMaquina }}" height="140vh" alt="">
+      </ion-col>
+      <!-- <ion-col class="ion-text-center">
+        <p>TU</p>
+        <img src="{{ srcJugador }}" height="180vh" class="my-2" alt="">
+      </ion-col> -->
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col>      <p>TU</p>
+        <img src="{{ srcJugador }}" height="140vh" class="my-2" alt=""></ion-col>
+    </ion-row>
+    <ion-row [hidden]="!estaEnJuego">
+        <ion-col>Elige opcion</ion-col>
+        <ion-col (click)="elegirPiedra()"><img src="{{ this.srcPiedra }}" height="40px" alt=""></ion-col>
+        <ion-col (click)="elegirPapel()" class="mx-2"><img src="{{ this.srcPapel }}" height="40px" alt=""></ion-col>
+        <ion-col (click)="elegirTijera()"><img src="{{ this.srcTijera }}" height="40px"  alt=""></ion-col>
+    </ion-row>
+  
+  <ion-row [hidden]="ocultarMostrarError" class="ion-text-center txtRojo">
+    <ion-col>Debe seleccionar opcion</ion-col>
+  </ion-row>
+  <ion-row class="ion-justify-content-center">    
+    <ion-button (click)="Jugar()" [hidden] = "estaEnJuego" >Jugar</ion-button>
+    <ion-button (click)="Verificar()" [hidden] = "!estaEnJuego" color="secondary">Listo</ion-button>
+  </ion-row>
+  <ion-row *ngIf="resultadoJuego" class="ion-text-center ion-margin-vertical">
+    <ion-col [ngClass]="claseResultado" >Resultado: {{ resultadoJuego }}</ion-col>        
+  </ion-row>
+  <ion-row *ngIf="resultadoJuego && resultadoJuego.toLowerCase()=='ganaste'" class="ion-text-center txtVerde">
+    <ion-col>Felicitaciones, ganaste 5% de descuento (Descuento no acumulable)</ion-col>
+  </ion-row>
+  <!-- <ion-row *ngIf="resultadoJuego && resultadoJuego.toLowerCase()=='ganaste' && yaTieneDescuento" class="ion-text-center txtVerde">
+    <ion-col>Felicitaciones, ganaste. Pero el descuento no es acumulable</ion-col>
+  </ion-row> -->
+
+</ion-content>

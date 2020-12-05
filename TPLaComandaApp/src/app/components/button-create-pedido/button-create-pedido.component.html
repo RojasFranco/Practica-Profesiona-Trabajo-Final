@@ -1,0 +1,5 @@
+
+<ion-button (click)="enviarPedido()" [disabled]="pedidosService.pedido.detallePedido.length == 0" expand="block">
+  <ion-icon name="paper-plane-outline"></ion-icon>
+  Enviar orden
+</ion-button>

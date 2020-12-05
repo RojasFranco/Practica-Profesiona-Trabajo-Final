@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="font-family: serif;" slot="start">
+      <app-header [urlBack]="'/home'"></app-header>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button slot="icon-only">
+        <ion-icon class="cart_icon" name="reader-outline"></ion-icon>
+        <ion-badge 
+                  class="cart_number" 
+                  color="danger"
+                  *ngIf="pedidosService.pedido.detallePedido.length > 0">
+                  {{pedidosService.pedido.detallePedido.length}}
+        </ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar showCancelButton="focus" (ionChange)="buscarMenu($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let item  of listMenu | filtro:texto" class="cardMenu">
+    <ion-card-header>
+      <ion-card-title class="titleMenu">{{item.name}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list class="listMenu">
+        <ion-item class="itemMenu" *ngFor="let concepto of item.values" (click)="conceptoDetails(concepto.docID)">
+            <ion-col size="8">
+              {{concepto.nombre}}<br>
+              {{concepto.precio | currency }}
+            </ion-col>
+            <ion-col size="4" class="col-img">
+              <img class="menu-img" [src]="concepto.imgs[0]"/>
+            </ion-col>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab class="btnMenuPedidos" *ngIf="pedidosService.pedido.detallePedido.length > 0" vertical="bottom" slot="fixed">
+    <ion-button (click)="irAPedidos()" color="danger" expand="block">
+      <ion-icon name="reader-outline" slot="start"></ion-icon>
+      Total={{pedidosService.totalPedido | currency}}
+    </ion-button>
+  </ion-fab>
+  
+</ion-content>

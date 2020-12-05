@@ -1,0 +1,6 @@
+<ion-app class="fondo">
+  <div [hidden]="!showPlash">
+    <app-splash></app-splash>
+  </div>
+  <ion-router-outlet [hidden]="showPlash"></ion-router-outlet>
+</ion-app>

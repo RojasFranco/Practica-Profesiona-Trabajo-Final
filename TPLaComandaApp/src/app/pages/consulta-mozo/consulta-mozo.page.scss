@@ -1,0 +1,59 @@
+ion-content{
+    // --background: url('../../../assets/imagenes/4A.jpg') 0 0/100% 100% no-repeat;
+    --background: rgb(3, 3, 117);
+    --background: linear-gradient(30deg, #030252 30%, #0a06f3 100%);
+    --padding-top: 2vh;
+    --padding-start: 2vw;
+    --padding-end: 2vw;
+}
+ion-header{
+    margin-right: 1vw;
+    background-color: #ffffff;
+}
+
+.items{
+    margin-bottom: 1vh;
+}
+
+.mensajes, .mjeEnviar{
+    background-color: white;
+}
+
+.informacion{
+    background: none;
+    color: white;
+}
+
+.txtMje{
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+.contenedorMsj{
+    position: fixed;
+    bottom: 2vh;
+    background-color: white;
+    width: 96vw;
+}
+
+.btnEnviar{
+    display: flex;
+    justify-content: flex-end;    
+}
+
+.btnesMesas{
+    --background: #ffffff;
+    color: blue;
+    width: 60vw;
+}
+
+h3{
+    color: #ffffff;
+}
+
+.gridBotones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
